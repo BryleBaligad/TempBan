@@ -1,0 +1,36 @@
+name: TempBan
+version: '${project.version}'
+main: com.brylebaligad.tempBan.TempBan
+api-version: '1.21'
+prefix: TempBan
+load: STARTUP
+authors: [ Bryle Baligad ]
+description: Temporarily bans players (in case they do something naughty)
+website: www.brylebaligad.com
+permissions:
+  tempban.commands:
+    description: "Permission to use all TempBan commands"
+    default: op
+  tempban.violation.notify:
+    description: "Permission to control who can receive violation trigger notifications"
+    default: op
+commands:
+  tempban:
+    description: "Ban people temporarily"
+    usage: "/tempban <player> [seconds|default] [reason]"
+    permission: tempban.commands
+  violation:
+    description: "Increment a player's violation level for a specific type"
+    usage: "/violation <player> <type>"
+    permission: tempban.commands
+  registerviolation:
+    description: "Register a violation type"
+    usage: "/registerviolation <name> <max VL> <expiration> [ban duration|default] [ban message]"
+    permission: tempban.commands
+  violationoverride:
+    description: "Overrides violation settings for specified players, in case of repeated offenses"
+    usage: "/violationoverride <player> <name> [max VL|preserve|reset] [expiration|preserve] [ban duration|preserve] [ban message]"
+    permission: tempban.commands
+  reload:
+    description: "Reloads the config file"
+    permission: tempban.commands
